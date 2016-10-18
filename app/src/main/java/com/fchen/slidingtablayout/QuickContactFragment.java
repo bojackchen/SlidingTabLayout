@@ -2,6 +2,7 @@ package com.fchen.slidingtablayout;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -22,7 +23,11 @@ import static com.fchen.library.PagerSlidingTabStrip.CustomTabProvider;
 
 public class QuickContactFragment extends DialogFragment {
 
-    public static QuickContactFragment newInstance() {
+    private static int background;
+
+    public static QuickContactFragment newInstance(int currentColor) {
+        // get current color for app and set the menu background accordingly
+        background = currentColor;
         return new QuickContactFragment();
     }
 
@@ -40,6 +45,9 @@ public class QuickContactFragment extends DialogFragment {
         ContactPagerAdapter adapter = new ContactPagerAdapter(getActivity());
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
+        // set backgroud of contact menu to be consistent with app
+        TextView quickContact = (TextView) root.findViewById(R.id.quickContact);
+        quickContact.setBackgroundDrawable(new ColorDrawable(background));
         return root;
     }
 
@@ -72,10 +80,10 @@ public class QuickContactFragment extends DialogFragment {
     public static class ContactPagerAdapter extends PagerAdapter implements CustomTabProvider {
 
         private final int[] ICONS = {
-                R.drawable.ic_launcher_gplus,
-                R.drawable.ic_launcher_gmail,
-                R.drawable.ic_launcher_gmaps,
-                R.drawable.ic_launcher_chrome
+                R.drawable.gplus,
+                R.drawable.gmail,
+                R.drawable.gmaps,
+                R.drawable.gchrome
         };
         private final String[] TITLES = {
                 "GPlus",

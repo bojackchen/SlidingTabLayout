@@ -29,11 +29,7 @@ import butterknife.ButterKnife;
 
 public class SuperAwesomeCardFragment extends Fragment {
 
-	private static final String ARG_POSITION = "position";
-
-	@BindView(R.id.textView)
-	TextView textView;
-
+	private static final String ARG_POSITION = "POSITION";
 	private int position;
 
 	public static SuperAwesomeCardFragment newInstance(int position) {
@@ -52,10 +48,27 @@ public class SuperAwesomeCardFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_card,container,false);
+		View rootView;
+
+		switch (position) {
+			case 0:
+				rootView = inflater.inflate(R.layout.fragment_auxiliary, container, false);
+				break;
+			case 1:
+				rootView = inflater.inflate(R.layout.fragment_home, container, false);
+				break;
+			case 2:
+				rootView = inflater.inflate(R.layout.fragment_appendix, container, false);
+				break;
+			case 3:
+				rootView = inflater.inflate(R.layout.fragment_about, container, false);
+				break;
+			default:
+				rootView = inflater.inflate(R.layout.fragment_home, container, false);
+				break;
+		}
 		ButterKnife.bind(this, rootView);
 		ViewCompat.setElevation(rootView, 50);
-		textView.setText("CARD " + position);
 		return rootView;
 	}
 }

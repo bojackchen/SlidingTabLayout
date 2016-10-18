@@ -3,18 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="170dip"
-        android:scaleType="centerCrop"
-        android:src="@drawable/contact" />
-
     <TextView
+        android:id="@+id/quickContact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/image"
-        android:background="#77000000"
+        android:background="@color/green"
         android:paddingBottom="14dip"
         android:paddingLeft="8dip"
         android:paddingTop="14dip"
@@ -26,7 +20,7 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/image"
+        android:layout_below="@id/quickContact"
         android:background="@drawable/background_tabs_diagonal" />
 
     <android.support.v4.view.ViewPager

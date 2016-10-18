@@ -53,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
-        final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
-                .getDisplayMetrics());
+        final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4,
+                getResources().getDisplayMetrics());
         pager.setPageMargin(pageMargin);
-        pager.setCurrentItem(0);
+        pager.setCurrentItem(1);
         changeColor(ContextCompat.getColor(getBaseContext(), R.color.green));
 
         tabs.setOnTabReselectedListener(new PagerSlidingTabStrip.OnTabReselectedListener() {
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_contact:
-                QuickContactFragment.newInstance().show(getSupportFragmentManager(), "QuickContactFragment");
+                QuickContactFragment.newInstance(currentColor).show(getSupportFragmentManager(), "QuickContactFragment");
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -122,8 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = {"Categories", "Home", "Top Paid", "Top Free", "Top Grossing", "Top New Paid",
-                "Top New Free", "Trending"};
+        private final String[] TITLES = {"AUXILIARY", "HOME", "APPENDIX", "ABOUT"};
 
         MyPagerAdapter(FragmentManager fm) {
             super(fm);
