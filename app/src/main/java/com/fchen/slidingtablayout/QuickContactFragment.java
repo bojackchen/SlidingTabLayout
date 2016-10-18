@@ -23,12 +23,16 @@ import static com.fchen.library.PagerSlidingTabStrip.CustomTabProvider;
 
 public class QuickContactFragment extends DialogFragment {
 
-    private static int background;
+    private static final String ARG_COLOR = "COLOR";
+    private int currentColor;
 
     public static QuickContactFragment newInstance(int currentColor) {
-        // get current color for app and set the menu background accordingly
-        background = currentColor;
-        return new QuickContactFragment();
+        // get current color of the app and set the menu background accordingly
+        QuickContactFragment f = new QuickContactFragment();
+        Bundle b = new Bundle();
+        b.putInt(ARG_COLOR, currentColor);
+        f.setArguments(b);
+        return f;
     }
 
     @Override
@@ -39,7 +43,7 @@ public class QuickContactFragment extends DialogFragment {
             getDialog().getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         }
 
-        View root = inflater.inflate(R.layout.fragment_quick_contact, container, false);
+        View root = inflater.inflate(R.layout.fragment_quickcontact, container, false);
         PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) root.findViewById(R.id.tabs);
         ViewPager pager = (ViewPager) root.findViewById(R.id.pager);
         ContactPagerAdapter adapter = new ContactPagerAdapter(getActivity());
@@ -47,7 +51,8 @@ public class QuickContactFragment extends DialogFragment {
         tabs.setViewPager(pager);
         // set backgroud of contact menu to be consistent with app
         TextView quickContact = (TextView) root.findViewById(R.id.quickContact);
-        quickContact.setBackgroundDrawable(new ColorDrawable(background));
+        quickContact.setBackgroundDrawable(new ColorDrawable(
+                getArguments().getInt(ARG_COLOR)));
         return root;
     }
 
@@ -111,7 +116,7 @@ public class QuickContactFragment extends DialogFragment {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            TextView textview = (TextView) LayoutInflater.from(mContext).inflate(R.layout.fragment_quickcontact, container, false);
+            TextView textview = (TextView) LayoutInflater.from(mContext).inflate(R.layout.quickcontact_pagertext, container, false);
             textview.setText("PAGE " + position);
             container.addView(textview);
             return textview;
