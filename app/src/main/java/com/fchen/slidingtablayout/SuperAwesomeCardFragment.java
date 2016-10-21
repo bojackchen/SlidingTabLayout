@@ -61,6 +61,9 @@ public class SuperAwesomeCardFragment extends Fragment {
 				rootView = inflater.inflate(R.layout.fragment_appendix, container, false);
 				break;
 			case 3:
+				rootView = inflater.inflate(R.layout.fragment_help, container, false);
+				break;
+			case 4:
 				rootView = inflater.inflate(R.layout.fragment_about, container, false);
 				break;
 			default:

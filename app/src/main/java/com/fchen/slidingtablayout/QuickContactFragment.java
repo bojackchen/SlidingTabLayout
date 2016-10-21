@@ -24,7 +24,6 @@ import static com.fchen.library.PagerSlidingTabStrip.CustomTabProvider;
 public class QuickContactFragment extends DialogFragment {
 
     private static final String ARG_COLOR = "COLOR";
-    private int currentColor;
 
     public static QuickContactFragment newInstance(int currentColor) {
         // get current color of the app and set the menu background accordingly

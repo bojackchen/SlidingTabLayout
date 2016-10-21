@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = {"AUXILIARY", "HOME", "APPENDIX", "ABOUT"};
+        private final String[] TITLES = {"AUXILIARY", "HOME", "APPENDIX", "HELP", "ABOUT"};
 
         MyPagerAdapter(FragmentManager fm) {
             super(fm);
