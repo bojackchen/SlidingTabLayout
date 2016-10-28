@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 dependencies {
-    compile "com.android.support:support-core-ui:24.2.0"
+    compile 'com.android.support:support-core-ui:24.2.0'
 }
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 15
@@ -25,5 +25,7 @@ android {
             java.srcDirs = ['src']
             res.srcDirs = ['res']
         }
+    }
+    compileOptions {
     }
 }
